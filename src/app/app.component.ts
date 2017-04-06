@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { CharactersServices } from './services/characters.service'; 
 
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,13 +13,10 @@ export class AppComponent implements OnInit {
   img_corta="/portrait_xlarge.";
   title = 'app works!';
   
-  constructor(private http: Http){}
+  constructor(private service: CharactersServices){}
 
   ngOnInit(){
-    this.http.get("https://gateway.marvel.com/v1/public/characters?ts=1&apikey=332d7d0388b04738ed71de41a25745a8&hash=19ca5648a47abb71d1b27d6542691237")
-      .subscribe(data => {
-        this.personajes = data.json().data.results;
-         console.log(this.personajes);
-      });
+    this.service.getCharacters()
+      .subscribe(personajes => this.personajes = personajes);
   }
 }
