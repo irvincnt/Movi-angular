@@ -10,8 +10,8 @@ export class CharactersServices{
      * Get all characters
      */
     getCharacters(){
-        return this.http.get("https://gateway.marvel.com/v1/public/characters?ts=1&apikey=332d7d0388b04738ed71de41a25745a8&hash=19ca5648a47abb71d1b27d6542691237")
-            .map( res => res.json().data.results)
+        return this.http.get("https://api.themoviedb.org/3/movie/popular?api_key=2eedb2a90a18f04f1c5752dd930ac5ac&language=es&page=1")
+            .map( res => res.json().results)
             .catch(err => {
                 return Observable.throw(err.json().data || 'Server error');
             });

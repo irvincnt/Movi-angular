@@ -1,7 +1,8 @@
 <div>
   <h1>Súper Herores</h1>
   <div *ngFor="let personaje of personajes">
-    <h3>{{personaje.name}}</h3>
-    <img [src]="personaje.thumbnail.path +img_corta+ personaje.thumbnail.extension" alt=""/>
+    <h3>{{personaje.title}}</h3>
+    <img [src]="+img_link+personaje.poster_path" alt=""/>
+    <p>{{personaje.overview}}</p>
   </div>
 </div>

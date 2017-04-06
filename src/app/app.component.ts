@@ -11,7 +11,7 @@ import { CharactersServices } from './services/characters.service';
 export class AppComponent implements OnInit {
   personajes;
   img_corta="/portrait_xlarge.";
-  title = 'app works!';
+  img_link = 'https://image.tmdb.org/t/p/w154';
   
   constructor(private service: CharactersServices){}
 
