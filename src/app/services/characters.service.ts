@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CharactersServices{
@@ -10,6 +11,9 @@ export class CharactersServices{
      */
     getCharacters(){
         return this.http.get("https://gateway.marvel.com/v1/public/characters?ts=1&apikey=332d7d0388b04738ed71de41a25745a8&hash=19ca5648a47abb71d1b27d6542691237")
-            .map( res => res.json().data.results);
+            .map( res => res.json().data.results)
+            .catch(err => {
+                return Observable.throw(err.json().data || 'Server error');
+            });
     }
 }

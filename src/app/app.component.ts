@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { CharactersServices } from './services/characters.service'; 
 
-import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.service.getCharacters()
-      .subscribe(personajes => this.personajes = personajes);
+      .subscribe(
+        personajes => this.personajes = personajes,
+        err => {
+          'Error en el servidor'
+        });
   }
 }

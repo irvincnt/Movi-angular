@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 
 import { CharactersServices } from './services/characters.service'; 
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
+
 @NgModule({
   declarations: [
     AppComponent
